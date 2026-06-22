@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Student Notes Portal - Kala Seva Sangeetha Sikshana | Carnatic Music Notes</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Access and download Carnatic music practice notes from Kala Seva Sangeetha Sikshana student portal.">
+    <meta name="keywords" content="Carnatic Music Notes, Sarali Swaras, Janta Swaras, Alankaras, Geethams, Music Study Material">
+    <meta property="og:title" content="Student Notes Portal - Kala Seva Sangeetha Sikshana">
+    <meta property="og:description" content="Access your Carnatic music practice notes">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rejeti.in/notes.html">
+    <link rel="canonical" href="https://rejeti.in/notes.html">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="loading-screen">
+    <div class="loading-content">
+        <h2 class="loading-title">Kala Seva Sangeetha Sikshana</h2>
+        <p class="loading-subtitle">Student Notes Portal</p>
+    </div>
+</div>
+
+<nav class="navbar" id="navbar">
+    <div class="nav-container">
+        <div class="nav-brand">
+            <span class="brand-icon">🎼</span>
+            <span class="brand-text">Kala Seva</span>
+        </div>
+        <ul class="nav-menu" id="nav-menu">
+            <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+            <li class="nav-item"><a href="notes.html" class="nav-link active">Student Notes</a></li>
+        </ul>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+            <span class="toggle-icon"></span>
+        </button>
+    </div>
+</nav>
+
+<section class="notes-page">
+    <div class="container">
+        <div id="login-section">
+            <div class="login-card fade-up">
+                <h1 class="login-title">Student Notes Portal</h1>
+                <p class="login-subtitle">Enter your password to access study materials</p>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="password-input" class="form-label">Password</label>
+                        <input
+                                type="password"
+                                id="password-input"
+                                class="form-input"
+                                placeholder="Enter your password"
+                                required
+                                aria-required="true"
+                        >
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">
+                        Access Notes
+                    </button>
+                    <p id="login-error" class="error-message" aria-live="polite"></p>
+                </form>
+            </div>
+        </div>
+
+        <div id="notes-section" class="hidden">
+            <div class="page-header fade-up">
+                <h1 class="page-title">Student Notes Dashboard</h1>
+                <p class="page-subtitle">Download your Carnatic music practice notes</p>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="notes-grid" id="notes-grid">
+                <!-- Debug Test Card - Remove after testing -->
+                <div class="note-card" style="background: #FF6B6B !important; color: white;">
+                    <div class="note-icon">🧪</div>
+                    <h3 class="note-title" style="color: white;">CSS Test Card - VISIBLE?</h3>
+                    <p class="note-description" style="color: white;">If you see this RED card on YELLOW background, CSS is working!</p>
+                    <a href="#" class="btn btn-primary" style="pointer-events: none; background: blue;">Test</a>
+                </div>
+                <!-- Notes cards will be generated dynamically -->
+            </div>
+
+            <div class="notes-cta fade-up">
+                <p class="cta-text">If you need any additional study materials, please contact your guru.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="footer-icon">🎼</span>
+                <h3 class="footer-name">Kala Seva Sangeetha Sikshana</h3>
+                <p class="footer-tagline">Preserving Tradition Through Music</p>
+            </div>
+            <div class="footer-links">
+                <a href="index.html" class="footer-link">Home</a>
+                <a href="contact.html" class="footer-link">Contact</a>
+                <a href="notes.html" class="footer-link">Student Notes</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="copyright">© 2026 Kala Seva Sangeetha Sikshana. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="script.js" defer></script>
+</body>
+</html>
