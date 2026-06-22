@@ -1195,3 +1195,62 @@ input:focus {
         --dark-brown: #2D2118;
     }
 }
+
+@media screen and (max-width: 768px) {
+    /* 1. Prevent container clipping and scale padding down */
+    .container {
+        width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+        box-sizing: border-box;
+    }
+
+    /* 2. Force all giant grid containers to stack neatly in single columns */
+    .about-grid,
+    .features-grid,
+    .testimonials-grid,
+    .mobile-responsive-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+
+    /* 3. Tame the size of the cards so they fit the screen neatly */
+    .about-card,
+    .feature-card,
+    .testimonial-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        padding: 24px 20px !important; /* Elegant breathing space inside cards */
+        margin: 0 0 10px 0 !important;
+    }
+
+    /* 4. Fix Hero elements scaling */
+    .hero-title {
+        font-size: 2.2rem !important; /* Shrinks the text down so it doesn't wrap awkwardly */
+        line-height: 1.2;
+    }
+    .hero-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+    }
+    .hero-buttons .btn {
+        width: 100%; /* Full-width stackable buttons are easier to tap on mobile */
+        text-align: center;
+    }
+
+    /* 5. Clean up the dynamic gallery container */
+    .gallery-wrapper {
+        width: 100%;
+        overflow: hidden;
+    }
+    #gallery-masonry {
+        display: grid !important;
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)) !important;
+        gap: 12px !important;
+    }
+}
