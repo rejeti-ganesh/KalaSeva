@@ -195,7 +195,7 @@ function loadNotes() {
     NOTES_DATA.forEach((note, index) => {
         try {
             const noteCard = document.createElement('div');
-            noteCard.className = 'note-card fade-up';
+            noteCard.className = 'note-card';
             noteCard.style.animationDelay = `${index * 0.1}s`;
 
             // Sanitize/escape title and description lightly by using textContent on created nodes
