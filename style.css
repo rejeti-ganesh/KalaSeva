@@ -1134,24 +1134,526 @@ section {
     }
 }
 
-@media (max-width: 480px) {
-    .hero-title {
-        font-size: 28px;
+/* ========================================
+   Attendance Management System Styles
+   ======================================== */
+
+/* Attendance Page */
+.attendance-page {
+    min-height: 100vh;
+    padding: 140px 20px 60px;
+    background: var(--off-white);
+}
+
+.attendance-page .container {
+    max-width: 1000px;
+}
+
+/* Attendance Login */
+#attendance-login-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 140px);
+}
+
+#attendance-login-section .login-card {
+    background: var(--white);
+    border-radius: 15px;
+    padding: 50px 40px;
+    box-shadow: 0 10px 40px var(--shadow);
+    max-width: 500px;
+    width: 100%;
+}
+
+#attendance-login-section .login-title {
+    font-size: 32px;
+    margin-bottom: 10px;
+    text-align: center;
+    color: var(--maroon);
+}
+
+/* Attendance Controls */
+.attendance-controls {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 5px 15px var(--shadow);
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.control-group label {
+    font-weight: 600;
+    color: var(--dark-brown);
+    font-size: 14px;
+}
+
+.control-input {
+    padding: 10px 12px;
+    border: 2px solid #E0E0E0;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: var(--transition);
+}
+
+.control-input:focus {
+    outline: none;
+    border-color: var(--saffron);
+    box-shadow: 0 0 0 3px rgba(255, 153, 51, 0.1);
+}
+
+/* Attendance Grid */
+.attendance-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 15px;
+    margin: 30px 0;
+}
+
+.student-attendance-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 5px 15px var(--shadow);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-left: 5px solid var(--saffron);
+}
+
+.student-attendance-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px var(--shadow);
+}
+
+.student-info {
+    margin-bottom: 15px;
+}
+
+.student-name {
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: var(--maroon);
+}
+
+.student-details {
+    font-size: 13px;
+    color: var(--light-brown);
+    opacity: 0.8;
+}
+
+/* Attendance Toggle Buttons */
+.attendance-toggle {
+    display: flex;
+    gap: 10px;
+}
+
+.status-btn {
+    flex: 1;
+    padding: 10px;
+    border: 2px solid #E0E0E0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.status-btn:hover {
+    transform: scale(1.05);
+}
+
+.present-btn {
+    color: #4CAF50;
+    background: #E8F5E9;
+}
+
+.present-btn.active {
+    background: #4CAF50;
+    color: white;
+    border-color: #4CAF50;
+}
+
+.absent-btn {
+    color: #F44336;
+    background: #FFEBEE;
+}
+
+.absent-btn.active {
+    background: #F44336;
+    color: white;
+    border-color: #F44336;
+}
+
+/* Attendance Actions */
+.attendance-actions {
+    display: flex;
+    gap: 15px;
+    margin: 30px 0;
+    flex-wrap: wrap;
+}
+
+.attendance-actions .btn {
+    flex: 1;
+    min-width: 200px;
+}
+
+/* Attendance Message */
+.attendance-message {
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 600;
+    margin: 20px 0;
+    display: none;
+}
+
+.attendance-message:not(:empty) {
+    display: block;
+}
+
+.message-success {
+    background: #E8F5E9;
+    color: #2E7D32;
+    border: 2px solid #4CAF50;
+}
+
+.message-error {
+    background: #FFEBEE;
+    color: #C62828;
+    border: 2px solid #F44336;
+}
+
+.message-info {
+    background: #E3F2FD;
+    color: #1565C0;
+    border: 2px solid #2196F3;
+}
+
+/* History Controls */
+.history-controls {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+    padding: 20px;
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 5px 15px var(--shadow);
+}
+
+/* History Table */
+.history-table-container {
+    background: var(--white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px var(--shadow);
+}
+
+.history-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.history-table thead {
+    background: var(--saffron);
+    color: var(--white);
+}
+
+.history-table th,
+.history-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #E0E0E0;
+}
+
+.history-table tbody tr:hover {
+    background: var(--off-white);
+}
+
+.status-present,
+.status-Present {
+    color: #2E7D32;
+    font-weight: 600;
+}
+
+.status-absent,
+.status-Absent {
+    color: #C62828;
+    font-weight: 600;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* Student Report */
+.report-controls {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+    padding: 20px;
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 5px 15px var(--shadow);
+}
+
+.student-report {
+    padding: 20px;
+}
+
+.report-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.summary-box {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px var(--shadow);
+    text-align: center;
+    border-top: 4px solid var(--saffron);
+}
+
+.summary-box h3 {
+    font-size: 14px;
+    color: var(--light-brown);
+    margin-bottom: 10px;
+}
+
+.summary-value {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--maroon);
+    margin: 0;
+}
+
+.summary-box.highlight {
+    background: linear-gradient(135deg, var(--saffron), var(--maroon));
+    color: var(--white);
+}
+
+.summary-box.highlight h3 {
+    color: var(--cream);
+}
+
+.summary-box.highlight .summary-value {
+    color: var(--white);
+}
+
+/* Report Details */
+.report-details {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px var(--shadow);
+}
+
+.report-details h3 {
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+/* Monthly Controls */
+.monthly-controls {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+    padding: 20px;
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 5px 15px var(--shadow);
+}
+
+.monthly-table-container {
+    background: var(--white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px var(--shadow);
+}
+
+.percentage-high {
+    color: #2E7D32;
+    font-weight: 600;
+}
+
+.percentage-low {
+    color: #F57C00;
+    font-weight: 600;
+}
+
+/* Attendance Tabs Navigation */
+.attendance-tabs {
+    display: flex;
+    gap: 10px;
+    margin: 30px 0;
+    flex-wrap: wrap;
+    padding: 20px;
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 5px 15px var(--shadow);
+}
+
+.tab-button {
+    padding: 12px 20px;
+    border: 2px solid var(--saffron);
+    background: transparent;
+    color: var(--saffron);
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.tab-button:hover {
+    background: var(--saffron);
+    color: var(--white);
+}
+
+.tab-button.active {
+    background: var(--saffron);
+    color: var(--white);
+}
+
+/* Attendance Tab */
+.attendance-tab {
+    transition: opacity 0.3s ease;
+}
+
+.attendance-tab.hidden {
+    display: none !important;
+}
+
+.loading-text {
+    text-align: center;
+    color: var(--light-brown);
+    padding: 40px;
+    font-size: 16px;
+}
+
+/* Responsive Attendance */
+@media (max-width: 768px) {
+    .attendance-page {
+        padding: 120px 20px 60px;
     }
 
-    .hero-buttons {
+    .attendance-controls,
+    .history-controls,
+    .report-controls,
+    .monthly-controls {
+        grid-template-columns: 1fr;
+    }
+
+    .attendance-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .attendance-actions {
         flex-direction: column;
     }
 
-    .btn {
+    .attendance-actions .btn {
+        min-width: auto;
+    }
+
+    .report-summary {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .student-attendance-card {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .attendance-toggle {
+        min-height: 50px;
+    }
+
+    .history-table {
+        font-size: 13px;
+    }
+
+    .history-table th,
+    .history-table td {
+        padding: 8px 10px;
+    }
+
+    .attendance-tabs {
+        flex-direction: column;
+    }
+
+    .tab-button {
         width: 100%;
     }
+}
 
-    .login-card {
-        padding: 20px 15px;
+@media (max-width: 480px) {
+    .attendance-page {
+        padding: 100px 15px 50px;
     }
 
-    .login-title {
+    .attendance-controls,
+    .history-controls,
+    .report-controls,
+    .monthly-controls {
+        padding: 15px;
+    }
+
+    .control-group {
+        gap: 5px;
+    }
+
+    .attendance-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .student-attendance-card {
+        padding: 15px;
+    }
+
+    .status-btn {
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    .report-summary {
+        grid-template-columns: 1fr;
+    }
+
+    .summary-value {
+        font-size: 24px;
+    }
+
+    .history-table {
+        font-size: 11px;
+    }
+
+    .history-table th,
+    .history-table td {
+        padding: 6px 8px;
+    }
+
+    #attendance-login-section .login-card {
+        padding: 30px 20px;
+    }
+
+    #attendance-login-section .login-title {
         font-size: 24px;
     }
 
@@ -1159,42 +1661,16 @@ section {
         font-size: 24px;
     }
 
-    .page-header {
-        margin-bottom: 30px;
+    .attendance-tabs {
+        gap: 5px;
     }
 
-    .notes-grid {
-        gap: 20px;
-    }
-
-    .note-card {
-        padding: 20px 15px;
+    .tab-button {
+        padding: 10px 12px;
+        font-size: 12px;
     }
 }
 
-/* Accessibility */
-@media (prefers-reduced-motion: reduce) {
-    * {
-        animation: none !important;
-        transition: none !important;
-    }
-}
-
-/* Focus indicators */
-a:focus,
-button:focus,
-input:focus {
-    outline: 2px solid var(--saffron);
-    outline-offset: 2px;
-}
-
-/* High contrast */
-@media (prefers-contrast: high) {
-    :root {
-        --maroon: #600000;
-        --dark-brown: #2D2118;
-    }
-}
 
 @media screen and (max-width: 768px) {
     /* 1. Prevent container clipping and scale padding down */

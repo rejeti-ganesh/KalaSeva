@@ -11,6 +11,12 @@
 // SHA-256 of empty string (allows login without password for testing):
 const PASSWORD_HASH = "6044af0f972a8f9908b97dc195456712b2a528f75eb8cc9f397687cc70c82d3a";
 
+// ATTENDANCE PASSWORD HASH (SHA-256) - Separate password for Attendance Portal
+// Default: Empty password (SHA-256 of empty string)
+// Change to set your own teacher password
+// See SETUP-ATTENDANCE.md for instructions
+const ATTENDANCE_PASSWORD_HASH = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855";
+
 // Gallery Images - Add your images to assets/gallery/ folder
 const GALLERY_IMAGES = [
     { src: "image1.jpg", alt: "Music class session" },
@@ -37,6 +43,11 @@ const NOTES_DATA = [
         filename: "Saranu Siddi Vinayaka.pdf",
         title: "Saranu Siddi Vinayaka",
         description: "Saranu Siddi Vinayaka is one of the famous Ganesha songs by Shri Purandara Dasaru"
+    },
+    {
+        filename: "Kalinga Nartana Thillana.pdf",
+        title: "Kalinga Nartana Thillana",
+        description: "Kalinga Nartana Thillana is a famous Thillana composed by Shri Oothukkadu Venkata Kavi"
     }
 ];
 
