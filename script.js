@@ -48,6 +48,26 @@ const NOTES_DATA = [
         filename: "Kalinga Nartana Thillana.pdf",
         title: "Kalinga Nartana Thillana",
         description: "Kalinga Nartana Thillana is a famous Thillana composed by Shri Oothukkadu Venkata Kavi"
+    },
+    {
+        filename: "Muddugare Yashoda.pdf",
+        title: "Muddugare Yashoda",
+        description: "Muddugare Yashoda is a famous composition by Shri Tallapaaka Annamacharya"
+    },
+    {
+        filename: "Rama Kodanda Rama.pdf",
+        title: "Rama Kodanda Rama",
+        description: "Rama Kodanda Rama is a famous composition by Shri Tyagaraja Swamy, one of the greatest composers in Carnatic music"
+    },
+    {
+        filename: "Takkuvemi Manaku.pdf",
+        title: "Takkuvemi Manaku",
+        description: "Takkuvemi Manaku is a famous composition by Shri Bhadrachala Ramadasu"
+    },
+    {
+        filename: "Vandemataram.pdf",
+        title: "Vandemataram",
+        description: "Vandemataram is National song composed by Shri Bankim Chandra Chattopadhyay"
     }
 ];
 
