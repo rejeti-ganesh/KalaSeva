@@ -249,6 +249,40 @@
           font-size: 0.95rem;
         }
 
+        .song-tile {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            flex-wrap: wrap;
+            text-align: left;
+            padding: 14px 12px;
+        }
+
+        .song-tile .swara-number {
+            margin-bottom: 2px;
+        }
+
+        .song-tile .play-label {
+            opacity: 0.75;
+        }
+
+        .notes-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 120px;
+            padding: 8px 10px;
+            border-radius: 10px;
+            background: var(--light);
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.82rem;
+            font-weight: 700;
+            border: 1px solid #ecd7bc;
+            white-space: nowrap;
+        }
+
         .swara-grid {
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
@@ -553,6 +587,29 @@
         </div>
     </section>
 
+    <!-- Kruthulu Keerthanalu -->
+    <section class="lesson-section">
+        <div class="lesson-heading">
+            <h3>Kruthulu Keerthanalu</h3>
+            <span>Practice Songs</span>
+        </div>
+
+        <div class="swara-grid">
+            <div class="song-tile swara-button" data-title="Paluke Bangaramayena" data-audio="audio/paluke-bangaramayena.mp3">
+                <span class="swara-number">Paluke Bangaramayena</span>
+                <span class="play-label">▶ Play song</span>
+                <a class="notes-link" href="notes/Paluke%20Bangaramayena.pdf" download>Download notes</a>
+            </div>
+
+            <div class="song-tile swara-button" data-title="Saranu Siddi Vinayaka" data-audio="audio/saranu-siddi-vinayaka.mp3">
+                <span class="swara-number">Saranu Siddi Vinayaka</span>
+                <span class="play-label">▶ Play song</span>
+                <a class="notes-link" href="notes/Saranu%20Siddi%20Vinayaka.pdf" download>Download notes</a>
+            </div>
+
+        </div>
+    </section>
+
     <div class="player-panel" id="playerPanel">
         <div class="player-info">
             <strong id="nowPlaying">Now Playing</strong>
@@ -562,7 +619,6 @@
         <audio
                 id="audioPlayer"
                 controls
-                controlslist="nodownload"
                 preload="none"
                 oncontextmenu="return false">
             Your browser does not support audio playback.
