@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Swara Lessons | Kala Seva Sangeetha Sikshana</title>
+
+    <meta
+            name="description"
+            content="Practice Sarali Swaras and Janta Swaras with Kala Seva Sangeetha Sikshana."
+    />
+
+    <style>
+        :root {
+          --primary: #7b1e1e;
+          --primary-dark: #4e1010;
+          --gold: #d49a2a;
+          --cream: #fff9ef;
+          --light: #f8eee1;
+          --text: #30241c;
+          --muted: #746458;
+          --white: #ffffff;
+          --shadow: 0 8px 25px rgba(87, 45, 15, 0.12);
+        }
+
+        * {
+          box-sizing: border-box;
+        }
+
+        body {
+          margin: 0;
+          font-family: Georgia, "Times New Roman", serif;
+          color: var(--text);
+          background: var(--cream);
+          line-height: 1.6;
+        }
+
+        header {
+          background:
+            linear-gradient(rgba(78, 16, 16, 0.88), rgba(78, 16, 16, 0.88)),
+            url("https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=1800&q=80")
+            center/cover;
+          color: var(--white);
+          text-align: center;
+          padding: 70px 20px 80px;
+        }
+
+        header h1 {
+          margin: 0;
+          font-size: clamp(2rem, 5vw, 4rem);
+          letter-spacing: 0.5px;
+        }
+
+        header p {
+          margin: 12px auto 0;
+          max-width: 700px;
+          font-size: 1.1rem;
+          color: #ffeac2;
+        }
+
+        .om-symbol {
+          color: var(--gold);
+          font-size: 2.5rem;
+          margin-bottom: 12px;
+        }
+
+        main {
+          width: min(1100px, 92%);
+          margin: 0 auto;
+          padding: 55px 0;
+        }
+
+        .intro {
+          text-align: center;
+          max-width: 780px;
+          margin: 0 auto 38px;
+        }
+
+        .intro h2 {
+          color: var(--primary);
+          font-size: clamp(1.7rem, 4vw, 2.5rem);
+          margin-bottom: 10px;
+        }
+
+        .intro p {
+          color: var(--muted);
+          margin-top: 0;
+        }
+
+        .lesson-section {
+          background: var(--white);
+          border-radius: 18px;
+          box-shadow: var(--shadow);
+          padding: 28px;
+          margin-bottom: 30px;
+          border-top: 5px solid var(--gold);
+        }
+
+        .lesson-heading {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 15px;
+          flex-wrap: wrap;
+          margin-bottom: 20px;
+        }
+
+        .lesson-heading h3 {
+          margin: 0;
+          color: var(--primary);
+          font-size: 1.7rem;
+        }
+
+        .lesson-heading span {
+          color: var(--muted);
+          font-size: 0.95rem;
+        }
+
+        .swara-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+          gap: 15px;
+        }
+
+        .swara-button {
+          position: relative;
+          border: 2px solid #ecd7bc;
+          border-radius: 13px;
+          background: #fffaf3;
+          color: var(--primary-dark);
+          padding: 18px 12px;
+          min-height: 92px;
+          cursor: pointer;
+          font-family: inherit;
+          font-size: 1rem;
+          font-weight: bold;
+          transition: 0.2s ease;
+        }
+
+        .swara-button:hover,
+        .swara-button:focus-visible {
+          border-color: var(--gold);
+          background: #fff1d9;
+          transform: translateY(-3px);
+          outline: none;
+        }
+
+        .swara-button.playing {
+          background: var(--primary);
+          color: var(--white);
+          border-color: var(--primary);
+          transform: scale(1.03);
+        }
+
+        .swara-number {
+          display: block;
+          font-size: 1.15rem;
+          margin-bottom: 4px;
+        }
+
+        .play-label {
+          display: block;
+          font-size: 0.82rem;
+          font-weight: normal;
+          opacity: 0.78;
+        }
+
+        .player-panel {
+          display: none;
+          align-items: center;
+          gap: 18px;
+          flex-wrap: wrap;
+          background: var(--primary-dark);
+          color: var(--white);
+          border-radius: 15px;
+          padding: 18px 20px;
+          margin-top: 30px;
+        }
+
+        .player-panel.visible {
+          display: flex;
+        }
+
+        .player-info {
+          flex: 1;
+          min-width: 220px;
+        }
+
+        .player-info strong {
+          display: block;
+          color: #ffdc8a;
+          font-size: 1.1rem;
+        }
+
+        .player-info small {
+          color: #f8dfc0;
+        }
+
+        audio {
+          width: min(100%, 430px);
+          height: 42px;
+        }
+
+        .practice-note {
+          background: var(--light);
+          border-left: 5px solid var(--gold);
+          padding: 18px 20px;
+          border-radius: 8px;
+          margin-top: 35px;
+          color: var(--text);
+        }
+
+        .practice-note strong {
+          color: var(--primary);
+        }
+
+        footer {
+          background: var(--primary-dark);
+          color: #f8dfc0;
+          text-align: center;
+          padding: 28px 20px;
+          font-size: 0.95rem;
+        }
+
+        footer strong {
+          color: #ffdc8a;
+        }
+
+        @media (max-width: 600px) {
+          header {
+            padding: 52px 18px 62px;
+          }
+
+          main {
+            width: 94%;
+            padding: 35px 0;
+          }
+
+          .lesson-section {
+            padding: 20px 15px;
+          }
+
+          .swara-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+          }
+
+          .swara-button {
+            min-height: 82px;
+            padding: 13px 7px;
+          }
+
+          .player-panel {
+            padding: 15px;
+          }
+
+          audio {
+            width: 100%;
+          }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="om-symbol">ॐ</div>
+    <h1>Kala Seva Sangeetha Sikshana</h1>
+    <p>Learn, practise and preserve the timeless tradition of Carnatic music.</p>
+</header>
+
+<main>
+    <section class="intro">
+        <h2>Swara Practice Lessons</h2>
+        <p>
+            Select a lesson below to listen to the recording. Practise slowly,
+            clearly and repeatedly with devotion.
+        </p>
+    </section>
+
+    <!-- Sarali Swaras -->
+    <section class="lesson-section">
+        <div class="lesson-heading">
+            <h3>Sarali Swaras</h3>
+            <span>11 Practice Lessons</span>
+        </div>
+
+        <div class="swara-grid">
+            <button class="swara-button"
+                    data-title="Sarali Swara 1"
+                    data-audio="audio/sarali-01.m4a">
+                <span class="swara-number">Sarali Swara 1</span>
+                <span class="play-label">▶ Play lesson</span>
+            </button>
+
+            <button class="swara-button"
+                    data-title="Sarali Swara 2"
+                    data-audio="audio/sarali-02.m4a">
+                <span class="swara-number">Sarali Swara 2</span>
+                <span class="play-label">▶ Play lesson</span>
+            </button>
+
+            <button class="swara-button"
+                    data-title="Sarali Swara 3"
+                    data-audio="audio/sarali-03.m4a">
+                <span class="swara-number">Sarali Swara 3</span>
+                <span class="play-label">▶ Play lesson</span>
+            </button>
+
+            <button class="swara-button"
+                    data-title="Sarali Swara 4"
+                    data-audio="audio/sarali-04.m4a">
+                <span class="swara-number">Sarali Swara 4</span>
+                <span class="play-label">▶ Play lesson</span>
+            </button>
+
+            <button class="swara-button"
+                    data-title="Sarali Swara 5"
+                    data-audio="audio/sarali-05.m4a">
+                <span class="swara-number">Sarali Swara 5</span>
+                <span class="play-label">▶ Play lesson</span>
+            </button>
+
+            <button class="swara-button"
+                    data-title="Sarali Swara 6"
+                    data-audio="audio/sarali-06.m4a">
+                <span class="swara-number">Sarali Swara 6</span>
+                <span class="play-label">▶ Play lesson</span>
+            </button>
+
+            <button class="swara-button"
+                    data-title="Sarali Swara 7"
+                    data-audio="audio/sarali-07.m4a">
+                <span class="swara-number">Sarali Swara 7</span>
+                <span class="play-label">▶ Play lesson</span>
+            </button>
+
+            <button class="swara-button"
+                    data-title="Sarali Swara 8"
+                    data-audio="audio/sarali-08.m4a">
+                <span class="swara-number">Sarali Swara 8</span>
+                <span class="play-label">▶ Play lesson</span>
+            </button>
+
+            <button class="swara-button"
+                    data-title="Sarali Swara 9"
+                    data-audio="audio/sarali-09.m4a">
+                <span class="swara-number">Sarali Swara 9</span>
+                <span class="play-label">▶ Play lesson</span>
+            </button>
+
+            <button class="swara-button"
+                    data-title="Sarali Swara 10"
+                    data-audio="audio/sarali-10.m4a">
+                <span class="swara-number">Sarali Swara 10</span>
+                <span class="play-label">▶ Play lesson</span>
+            </button>
+
+            <button class="swara-button"
+                    data-title="Sarali Swara 11"
+                    data-audio="audio/sarali-11.m4a">
+                <span class="swara-number">Sarali Swara 11</span>
+                <span class="play-label">▶ Play lesson</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Janta Swaras -->
+    <section class="lesson-section">
+        <div class="lesson-heading">
+            <h3>Janta Swaras</h3>
+            <span>4 Practice Lessons</span>
+        </div>
+
+        <div class="swara-grid">
+            <button class="swara-button"
+                    data-title="Janta Swara 1"
+                    data-audio="audio/janta-01.m4a">
+                <span class="swara-number">Janta Swara 1</span>
+                <span class="play-label">▶ Play lesson</span>
+            </button>
+
+            <button class="swara-button"
+                    data-title="Janta Swara 2"
+                    data-audio="audio/janta-02.m4a">
+                <span class="swara-number">Janta Swara 2</span>
+                <span class="play-label">▶ Play lesson</span>
+            </button>
+
+            <button class="swara-button"
+                    data-title="Janta Swara 3"
+                    data-audio="audio/janta-03.m4a">
+                <span class="swara-number">Janta Swara 3</span>
+                <span class="play-label">▶ Play lesson</span>
+            </button>
+
+            <button class="swara-button"
+                    data-title="Janta Swara 4"
+                    data-audio="audio/janta-04.m4a">
+                <span class="swara-number">Janta Swara 4</span>
+                <span class="play-label">▶ Play lesson</span>
+            </button>
+        </div>
+    </section>
+
+    <div class="player-panel" id="playerPanel">
+        <div class="player-info">
+            <strong id="nowPlaying">Now Playing</strong>
+            <small>Use the controls to pause, resume or adjust the volume.</small>
+        </div>
+
+        <audio
+                id="audioPlayer"
+                controls
+                controlslist="nodownload"
+                preload="none"
+                oncontextmenu="return false">
+            Your browser does not support audio playback.
+        </audio>
+    </div>
+
+    <div class="practice-note">
+        <strong>Practice Tip:</strong>
+        Listen carefully once, then sing along with the recording. Repeat each
+        swara several times before moving to the next lesson.
+    </div>
+</main>
+
+<footer>
+    <strong>Kala Seva Sangeetha Sikshana</strong><br />
+    Preserving Tradition Through Music
+</footer>
+
+<script>
+    const buttons = document.querySelectorAll(".swara-button");
+    const audioPlayer = document.getElementById("audioPlayer");
+    const playerPanel = document.getElementById("playerPanel");
+    const nowPlaying = document.getElementById("nowPlaying");
+
+    buttons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        const audioFile = button.dataset.audio;
+        const lessonTitle = button.dataset.title;
+
+        buttons.forEach(function (item) {
+          item.classList.remove("playing");
+          item.querySelector(".play-label").textContent = "▶ Play lesson";
+        });
+
+        if (audioPlayer.src.includes(audioFile) && !audioPlayer.paused) {
+          audioPlayer.pause();
+          button.querySelector(".play-label").textContent = "▶ Play lesson";
+          button.classList.remove("playing");
+          return;
+        }
+        audioPlayer.setAttribute("controlsList", "nodownload");
+        audioPlayer.setAttribute("disablePictureInPicture", "");
+        audioPlayer.setAttribute("controls", "");
+
+
+        audioPlayer.src = audioFile;
+        nowPlaying.textContent = lessonTitle;
+        playerPanel.classList.add("visible");
+
+        button.classList.add("playing");
+        button.querySelector(".play-label").textContent = "⏸ Playing";
+
+        audioPlayer.play().catch(function (error) {
+          console.log("Audio playback requires user interaction:", error);
+        });
+
+        playerPanel.scrollIntoView({
+          behavior: "smooth",
+          block: "nearest"
+        });
+      });
+    });
+
+    audioPlayer.addEventListener("ended", function () {
+      buttons.forEach(function (button) {
+        button.classList.remove("playing");
+        button.querySelector(".play-label").textContent = "▶ Play lesson";
+      });
+    });
+
+    audioPlayer.addEventListener("pause", function () {
+      buttons.forEach(function (button) {
+        if (!audioPlayer.ended) {
+          button.querySelector(".play-label").textContent = "▶ Resume";
+        }
+      });
+    });
+</script>
+
+</body>
+</html>
