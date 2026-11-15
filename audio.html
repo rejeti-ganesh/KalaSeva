@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
     <title>Swara Lessons | Kala Seva Sangeetha Sikshana</title>
 
@@ -35,6 +35,138 @@
           background: var(--cream);
           line-height: 1.6;
         }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--white);
+            box-shadow: 0 2px 20px var(--shadow);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--maroon);
+        }
+
+        .brand-icon {
+            font-size: 28px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-link {
+            color: var(--dark-brown);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 16px;
+            transition: var(--transition);
+            border-radius: 25px;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            background: var(--saffron);
+            color: var(--white);
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .toggle-icon {
+            width: 25px;
+            height: 3px;
+            background: var(--maroon);
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .toggle-icon::before,
+        .toggle-icon::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 3px;
+            background: var(--maroon);
+            transition: var(--transition);
+        }
+
+        .toggle-icon::before {
+            top: -8px;
+        }
+
+        .toggle-icon::after {
+            top: 8px;
+        }
+
+        /* Mobile Navigation */
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: var(--white);
+                flex-direction: column;
+                padding: 20px;
+                gap: 15px;
+                transform: translateY(-150%);
+                transition: var(--transition);
+                box-shadow: 0 5px 20px var(--shadow);
+            }
+
+            .nav-menu.active {
+                transform: translateY(0);
+            }
+        }
+
+        /* Utility Classes */
+        .hidden {
+            display: none !important;
+        }
+
+        .visible {
+            display: block !important;
+        }
+
+        .js-enabled {
+            /* JavaScript is enabled */
+        }
+
+        .keyboard-nav *:focus {
+            outline: 2px solid var(--saffron);
+            outline-offset: 2px;
+        }
+
 
         header {
           background:
@@ -263,6 +395,23 @@
 </head>
 
 <body>
+<nav class="navbar" id="navbar">
+    <div class="nav-container">
+        <div class="nav-brand">
+            <span class="brand-icon">🎼</span>
+            <span class="brand-text">Kala Seva</span>
+        </div>
+        <ul class="nav-menu" id="nav-menu">
+            <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+            <li class="nav-item"><a href="notes.html" class="nav-link">Student Notes</a></li>
+            <li class="nav-item"><a href="audio.html" class="nav-link">Practice Audio</a></li>
+        </ul>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+            <span class="toggle-icon"></span>
+        </button>
+    </div>
+</nav>
 
 <header>
     <div class="om-symbol">ॐ</div>
@@ -283,7 +432,7 @@
     <section class="lesson-section">
         <div class="lesson-heading">
             <h3>Sarali Swaras</h3>
-            <span>11 Practice Lessons</span>
+            <a href="notes/Sarali%20Swaramulu.pdf" download>Download Sarali Swaras notes</a>
         </div>
 
         <div class="swara-grid">
@@ -428,7 +577,7 @@
 </main>
 
 <footer>
-    <strong>Kala Seva Sangeetha Sikshana</strong><br />
+    <strong>Kala Seva Sangeetha Sikshana</strong><br/>
     Preserving Tradition Through Music
 </footer>
 

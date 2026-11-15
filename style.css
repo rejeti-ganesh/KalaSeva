@@ -241,6 +241,131 @@ h1, h2, h3, h4, h5, h6 {
     outline-offset: 2px;
 }
 
+.audio-learning-strip {
+  width: 92%;
+  max-width: 1120px;
+  margin: 35px auto;
+  padding: 24px 30px;
+  border-radius: 18px;
+  background:
+    linear-gradient(135deg, rgba(123, 30, 30, 0.96), rgba(78, 16, 16, 0.98)),
+    url("https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=1400&q=80")
+    center / cover;
+  color: #ffffff;
+  box-shadow: 0 10px 25px rgba(78, 16, 16, 0.2);
+}
+
+.audio-strip-content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.audio-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 60px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #d49a2a;
+  color: #4e1010;
+  font-size: 1.8rem;
+}
+
+.audio-strip-text {
+  flex: 1;
+}
+
+.audio-strip-text h2 {
+  margin: 0 0 5px;
+  color: #ffdc8a;
+  font-size: clamp(1.25rem, 3vw, 1.8rem);
+}
+
+.audio-strip-text p {
+  margin: 0;
+  color: #fff1d9;
+  font-size: 0.98rem;
+}
+
+.audio-strip-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 13px 20px;
+  border: 2px solid #ffdc8a;
+  border-radius: 30px;
+  background: #d49a2a;
+  color: #4e1010;
+  font-weight: bold;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.25s ease, color 0.25s ease,
+              transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.audio-strip-button span {
+  font-size: 1.3rem;
+  line-height: 1;
+  transition: transform 0.25s ease;
+}
+
+.audio-strip-button:hover,
+.audio-strip-button:focus-visible {
+  background: #ffffff;
+  color: #7b1e1e;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  outline: none;
+}
+
+.audio-strip-button:hover span,
+.audio-strip-button:focus-visible span {
+  transform: translateX(4px);
+}
+
+@media (max-width: 700px) {
+  .audio-learning-strip {
+    width: 94%;
+    padding: 22px 18px;
+  }
+
+  .audio-strip-content {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .audio-strip-text {
+    min-width: calc(100% - 80px);
+  }
+
+  .audio-strip-button {
+    width: 100%;
+    justify-content: center;
+    margin-top: 5px;
+  }
+}
+
+@media (max-width: 420px) {
+  .audio-icon {
+    flex-basis: 50px;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+  }
+
+  .audio-strip-text h2 {
+    font-size: 1.2rem;
+  }
+
+  .audio-strip-text p {
+    font-size: 0.9rem;
+  }
+}
+
 /* Loading Screen */
 #loading-screen {
     position: fixed;

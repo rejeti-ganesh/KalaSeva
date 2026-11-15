@@ -42,31 +42,7 @@
 
 <section class="notes-page">
     <div class="container">
-        <div id="login-section">
-            <div class="login-card fade-up">
-                <h1 class="login-title">Student Notes Portal</h1>
-                <p class="login-subtitle">Enter your password to access study materials</p>
-                <form id="login-form">
-                    <div class="form-group">
-                        <label for="password-input" class="form-label">Password</label>
-                        <input
-                                type="password"
-                                id="password-input"
-                                class="form-input"
-                                placeholder="Enter your password"
-                                required
-                                aria-required="true"
-                        >
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-block">
-                        Access Notes
-                    </button>
-                    <p id="login-error" class="error-message" aria-live="polite"></p>
-                </form>
-            </div>
-        </div>
-
-        <div id="notes-section" class="hidden">
+        <div id="notes-section">
             <div class="page-header fade-up">
                 <h1 class="page-title">Student Notes Dashboard</h1>
                 <p class="page-subtitle">Download your Carnatic music practice notes</p>
@@ -74,14 +50,6 @@
             </div>
 
             <div class="notes-grid" id="notes-grid">
-                <!-- Debug Test Card - Remove after testing -->
-                <div class="note-card" style="background: #FF6B6B !important; color: white;">
-                    <div class="note-icon">🧪</div>
-                    <h3 class="note-title" style="color: white;">CSS Test Card - VISIBLE?</h3>
-                    <p class="note-description" style="color: white;">If you see this RED card on YELLOW background, CSS is working!</p>
-                    <a href="#" class="btn btn-primary" style="pointer-events: none; background: blue;">Test</a>
-                </div>
-                <!-- Notes cards will be generated dynamically -->
             </div>
 
             <div class="notes-cta fade-up">

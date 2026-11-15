@@ -2,15 +2,6 @@
 // Kala Seva Sangeetha Sikshana - Scripts
 // ========================================
 
-// PASSWORD HASH (SHA-256) - Change this to set your password
-// Current: Empty password (no security - FOR TESTING ONLY)
-// To generate hash for new password: run in browser console:
-// crypto.subtle.digest('SHA-256', new TextEncoder().encode('your-password')).then(hash =>
-//   Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join(''))
-//   .then(hashHex => console.log('Password hash:', hashHex))
-// SHA-256 of empty string (allows login without password for testing):
-const PASSWORD_HASH = "6044af0f972a8f9908b97dc195456712b2a528f75eb8cc9f397687cc70c82d3a";
-
 // ATTENDANCE PASSWORD HASH (SHA-256) - Separate password for Attendance Portal
 // Default: Empty password (SHA-256 of empty string)
 // Change to set your own teacher password
@@ -189,20 +180,6 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeLightbox();
 });
 
-// ========================================
-// Notes Portal - Password Verification
-// (query DOM elements at time of use to avoid nulls if script is loaded
-// before the DOM or the page structure changes)
-// ========================================
-
-async function hashPassword(password) {
-    const encoder = new TextEncoder();
-    const data = encoder.encode(password);
-    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
-    const hashArray = Array.from(new Uint8Array(hashBuffer));
-    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-}
-
 function loadNotes() {
     const notesGrid = document.getElementById('notes-grid');
     if (!notesGrid) {
@@ -341,69 +318,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add keyboard navigation class
     document.body.classList.add('js-enabled');
 
-    // ---------------------------------
-    // Notes portal: wire up login form
-    // ---------------------------------
-    const loginSection = document.getElementById('login-section');
-    const notesSection = document.getElementById('notes-section');
-    const loginForm = document.getElementById('login-form');
-    const passwordInput = document.getElementById('password-input');
-    const loginError = document.getElementById('login-error');
-
-    if (loginForm) {
-        loginForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-
-            const enteredPassword = passwordInput ? passwordInput.value : '';
-            if (!enteredPassword) {
-                if (loginError) loginError.textContent = 'Please enter a password';
-                return;
-            }
-
-            try {
-                const enteredHash = await hashPassword(enteredPassword);
-                console.log('🔐 Password verification attempt');
-                console.log('Entered hash:', enteredHash);
-                console.log('Expected hash:', PASSWORD_HASH);
-
-                if (enteredHash === PASSWORD_HASH) {
-                    // Success
-                    console.log('✅ Password verified successfully!');
-
-                    // Log visibility toggle
-                    if (loginSection) {
-                        console.log('📵 Hiding login section...');
-                        const hadHidden = loginSection.classList.contains('hidden');
-                        loginSection.classList.add('hidden');
-                        console.log('   Login section hidden class added. Was already hidden:', hadHidden);
-                        console.log('   Login section display:', window.getComputedStyle(loginSection).display);
-                    }
-
-                    if (notesSection) {
-                        console.log('📺 Showing notes section...');
-                        const hadHidden = notesSection.classList.contains('hidden');
-                        notesSection.classList.remove('hidden');
-                        console.log('   Notes section hidden class removed. Was hidden:', hadHidden);
-                        console.log('   Notes section display:', window.getComputedStyle(notesSection).display);
-                    }
-
-                    if (loginError) loginError.textContent = '';
-
-                    console.log('📚 About to call loadNotes()...');
-                    loadNotes();
-                    console.log('✅ Notes loaded and section displayed');
-                } else {
-                    // Failure
-                    console.log('❌ Password mismatch');
-                    if (loginError) loginError.textContent = 'Incorrect password. Please try again.';
-                    if (passwordInput) passwordInput.value = '';
-                }
-            } catch (error) {
-                console.error('❌ Error during password verification:', error);
-                if (loginError) loginError.textContent = 'Error verifying password. Please try again.';
-            }
-        });
-    }
+    if (document.getElementById('notes-grid')) loadNotes();
 });
 
 console.log('🎼 Kala Seva Sangeetha Sikshana - Website Loaded');
